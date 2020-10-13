@@ -4,12 +4,11 @@
 		<script>
 			let			task_list = ["掃除", "買い物", "散歩"];
 			function	print_tasks() {
-				document.write("\
-					==============================<br>\
-					現在持っているタスク一覧<br>\
-					==============================<br>");
+				console.log("==============================");
+				console.log("現在持っているタスク一覧");
+				console.log("==============================");
 				for (let task_num in task_list) {
-					document.write(task_num + " : " + task_list[task_num] + "<br>");
+					console.log(task_num + " : " + task_list[task_num]);
 				}
 			}
 
@@ -18,7 +17,25 @@
 				let answer = prompt("「確認、追加、削除、終了」の4つのいずれかを入力してください。");
 				if (answer === "確認") {
 					print_tasks();
-				} else if (answer === null) {
+				} else if (answer === "追加") {
+					let new_task = prompt("追加するタスクを入力してください");
+					if (new_task !== null) {
+						task_list.push(new_task);
+						print_tasks();
+						alert("新しいタスクを追加しました。");
+					}
+				} else if (answer === "削除") {
+					let delete_task = prompt("削除するタスクを入力してください");
+					if (delete_task !== null) {
+						task_list.forEach((item, index) => {
+							if (item === delete_task) {
+								task_list.splice(index, 1);
+							}
+						});
+						print_tasks();
+						alert(`タスク[${delete_task}]を削除しました。`);
+					}
+				} else if (answer === null || answer === "終了") {
 					break;
 				}
 			}
