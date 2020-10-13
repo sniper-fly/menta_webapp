@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<script>
+			let			task_list = ["掃除", "買い物", "散歩"];
+			function	print_tasks() {
+				document.write("\
+					==============================<br>\
+					現在持っているタスク一覧<br>\
+					==============================<br>");
+				for (let task_num in task_list) {
+					document.write(task_num + " : " + task_list[task_num] + "<br>");
+				}
+			}
+
+			print_tasks();
+			while (true) {
+				let answer = prompt("「確認、追加、削除、終了」の4つのいずれかを入力してください。");
+				if (answer === "確認") {
+					print_tasks();
+				} else if (answer === null) {
+					break;
+				}
+			}
+		</script>
+	</body>
+</html>
