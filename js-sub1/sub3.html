@@ -11,7 +11,7 @@
 					console.log(task_num + " : " + task_list[task_num]);
 				}
 			}
-			function	create_new_task(task_list) {
+			function	add_new_task(task_list) {
 				let new_task = prompt("タスクを入力してください");
 				if (new_task !== null) {
 					task_list.push(new_task);
@@ -19,26 +19,31 @@
 					alert("新しいタスクを追加しました。");
 				}
 			}
+			function	delete_task(task_list) {
+				let delete_task = prompt("削除するタスクを入力してください");
+				if (delete_task !== null) {
+					task_list.forEach((item, index) => {
+						if (item === delete_task) {
+							task_list.splice(index, 1);
+							alert(`タスク[${delete_task}]を削除しました。`);
+						} else if (index === task_list.length - 1) {
+							alert(`タスク[${delete_task}]は見つかりませんでした。`);
+						}
+					});
+					print_tasks();
+				}
+			}
 
 			print_tasks();
-			create_new_task(task_list);
+			add_new_task(task_list);
 			while (true) {
 				answer = prompt("「確認、追加、削除、終了」の4つのいずれかを入力してください。");
 				if (answer === "確認") {
 					print_tasks();
 				} else if (answer === "追加") {
-					create_new_task(task_list);
+					add_new_task(task_list);
 				} else if (answer === "削除") {
-					let delete_task = prompt("削除するタスクを入力してください");
-					if (delete_task !== null) {
-						task_list.forEach((item, index) => {
-							if (item === delete_task) {
-								task_list.splice(index, 1);
-							}
-						});
-						print_tasks();
-						alert(`タスク[${delete_task}]を削除しました。`);
-					}
+					delete_task(task_list);
 				} else if (answer === null || answer === "終了") {
 					break;
 				}
