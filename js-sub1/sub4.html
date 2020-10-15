@@ -2,31 +2,31 @@
 <html>
 	<body>
 		<script>
-			let			task_list = [
+			let taskList = [
 					["机を片づける", "掃除"],
 					["牛乳を買う", "買い物"],
 					["散歩する", "運動"]
 				];
-			function	print_tasks() {
+			function printTasks() {
 				console.log("==============================");
 				console.log("現在持っているタスク一覧");
 				console.log("==============================");
-				task_list.forEach((task_info, idx) => {
-					console.log(idx + " : [内容]" + task_info[0] + "、[ジャンル]" + task_info[1]);
+				taskList.forEach((taskInfo, idx) => {
+					console.log(idx + " : [内容]" + taskInfo[0] + "、[ジャンル]" + taskInfo[1]);
 				});
 			}
 
-			print_tasks();
-			let	task = prompt("タスクを入力してください");
+			printTasks();
+			let task = prompt("タスクを入力してください");
 			if (task !== null) {
-				let	genre = prompt("ジャンルを入力してください");
+				let genre = prompt("ジャンルを入力してください");
 				if (genre !== null) {
-					task_list.push([task, genre]);
+					taskList.push([task, genre]);
 					alert("新しいタスクを追加しました。");
-					print_tasks();
+					printTasks();
 				}
 			}
-			let	mode_select = prompt("「確認、追加、削除、終了」の4つのいずれかを入力してください。");
+			let modeSelect = prompt("「確認、追加、削除、終了」の4つのいずれかを入力してください。");
 		</script>
 	</body>
 </html>
