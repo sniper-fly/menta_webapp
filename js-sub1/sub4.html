@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<script>
+			const taskList = [
+					{
+						task: "机を片づける",
+						genre: "掃除"
+						},
+					{
+						task: "牛乳を買う",
+						genre: "買い物"
+						},
+					{
+						task: "散歩する",
+						genre: "運動"
+						}
+				];
+			function printTasks() {
+				console.log("==============================");
+				console.log("現在持っているタスク一覧");
+				console.log("==============================");
+				taskList.forEach((taskInfo, idx) => {
+					console.log(idx + " : [内容]" + taskInfo.task + "、[ジャンル]" + taskInfo.genre);
+				});
+			}
+
+			printTasks();
+			let input_task = prompt("タスクを入力してください");
+			if (input_task !== null) {
+				let input_genre = prompt("ジャンルを入力してください");
+				if (input_genre !== null) {
+					taskList.push({
+						task: input_task,
+						genre: input_genre
+						});
+					alert("新しいタスクを追加しました。");
+					printTasks();
+				}
+			}
+			let modeSelect = prompt("「確認、追加、削除、終了」の4つのいずれかを入力してください。");
+		</script>
+	</body>
+</html>
