@@ -9,18 +9,65 @@
 	<body>
 		<img src="MyHTML/img/logo.png" width="400" height="50" alt="hello dot install">
 		<h1>dotinstall</h1>
-		<p>let's learn!</p>
-		<p>dotinstall is a <strong>strong website!!</strong><p>
-		<blockquote cite="https://dotinstall.com">I am a god</blockquote>
-		<hr>
-		<pre>
-			<code>
-				&lt;p&gt;Here is a ku.&lt;p&gt;
-				&lt;p&gt;いますぐに&lt;p&gt;
-				&lt;p&gt;はじめてみよう&lt;p&gt;
-				&lt;p&gt;HTML&lt;p&gt;
-			</code>
-		</pre>
+
+		<h2>目次</h2>
+		<ul>
+			<li><a href="#qa">質疑応答</a></li>
+			<li><a href="#boyaki">ぼやき</a></li>
+			<li><a href="#history">沿革</a></li>
+		</ul>
+		<h2 id="qa">質疑応答</h2>
+		<ul>
+			<li>foo</li>
+			<li>bar</li>
+			<li>baz</li>
+		</ul>
+		<ol>
+			<li>okiru</li>
+			<li>kuu</li>
+			<li>neru</li>
+		</ol>
+		<dl>
+			<dt>Q.who are you?</dt>
+			<dd>A.I am a god.</dd>
+		</dl>
+		<h2 id="boyaki">ぼやき</h2>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+		<p>ああああああああああああああああああああ質疑応答</p>
+
+		<h2 id="history">沿革</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>年</th>
+					<th>出来事</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>2014</td>
+					<td><a href="https://dotinstall.com" target="_blank">会社設立</a></td>
+				</tr>
+				<tr>
+					<td>2016</td>
+					<td>リニューアル</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p><a href="#top">時を戻そう</a></p>
 
 	</body>
 </html>
@@ -29,6 +76,12 @@
 見出しとパラグラフの表示 -->
 <!-- 文字実態参照 -->
 <!-- &lt;p&gt; -->
+
+<!-- コードにはcodeタグ
+preタグで囲むと改行が反映される　すでに成型した文字列につかう
+引用にはblockquote cite属性もつけられる
+imgタグにはsrcの他にwidthやheight属性、画像が表示できない時の代替文章としてalt属性をつけられる
+
 箇条書きリスト
 unordered list
 list item
@@ -40,4 +93,16 @@ list item
 説明リスト
 descripton list
 description term
-description detail
+description detail -->
+
+<!-- 表の表現
+tableタグで全体を囲む
+theadで見出しタグを囲む
+tbodyで表の要素
+table row => tr 行
+th => table header cell ヘッダー行の要素
+td => table data cell 本体行の要素 -->
+
+<!-- ページ内リンク
+ページ内で好きな場所に飛ぶには？？
+飛びたいタグにidをつけてあげて、hrefでそのidを指定してあげる -->
