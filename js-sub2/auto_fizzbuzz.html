@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AutoFizzBuzz</title>
+		<script>
+			function smallestCommon(a, b) {
+				//LCM = a * b / GCD
+				if (a < b) {
+					const tmp = a;
+					a = b;
+					b = tmp;
+				}
+				x = a * b;
+
+				let r = a % b;
+				while (r !== 0) {
+					a = b;
+					b = r;
+					r = a % b;
+				}
+				return (x / b);
+			}
+
+			//id outputのdivタグに、インラインのspanタグにFizzやBuzzを入れて子要素として追加する
+			function addFizzBuzzLine(str, i) {
+				const element = document.createElement("span");
+				element.innerHTML = str + " " + i + "<br>";
+				document.getElementById("output").appendChild(element);
+			}
+
+			function onButtonClick() {
+				const output = document.getElementById("output");
+				let FizzNumber = document.getElementById("FizzNum").value;
+				let BuzzNumber = document.getElementById("BuzzNum").value;
+
+				//初期化
+				output.innerHTML = "";
+
+				if (FizzNumber === "" || BuzzNumber === "") {
+					output.innerText = "空欄があります。整数値を入力してください。";
+				} else if (isNaN(Number(FizzNumber)) || isNaN(Number(BuzzNumber))) {
+					output.innerText = "数以外の入力があります。整数値を入力してください。";
+				} else if (Number.isInteger(Number(FizzNumber))
+					&& Number.isInteger(Number(BuzzNumber))) {
+					const lcm = smallestCommon(FizzNumber, BuzzNumber);
+					for (let i = 1; i < 100; i++) {
+						if (i % lcm === 0) {
+							addFizzBuzzLine("FizzBuzz", i);
+						} else if (i % FizzNumber === 0) {
+							addFizzBuzzLine("Fizz", i);
+						} else if (i % BuzzNumber === 0) {
+							addFizzBuzzLine("Buzz", i);
+						}
+					}
+				} else {
+					output.innerText = "整数値を入力してください。";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h1>FizzBuzz問題</h1>
+		<p>
+			<form action="#" id="inputForm">
+				<table>
+					<tr><td>FizzNum: </td><td><input type="text" id="FizzNum" placeholder="整数値を入力してください"></td></tr>
+					<tr><td>BuzzNum: </td><td><input type="text" id="BuzzNum" placeholder="整数値を入力してください"></td></tr>
+				</table>
+				<input type="button" value="実行" onclick="onButtonClick();"><br>
+			</form>
+		</p>
+		<p>
+			【出力】
+		</p>
+		<div id="output"></div>
+	</body>
+</html>
