@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<script>
+		let todos = [];
+
+		function displayTodos() {
+			const tbodyTag = document.getElementById("tableBody");
+
+			tbodyTag.innerHTML = ""; //まず既存のHTMLを初期化する。表示するたびに新しいHTMLを生成する
+			todos.forEach((todoObjct, idx) => {
+				const element = document.createElement("tr");
+				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status}></td> <td><input type="button" value="削除"></td>`;
+				tbodyTag.appendChild(element);
+			});
+		}
+
+		function onButtonClick() {
+			const inputTextTag = document.getElementById("inputText");
+			todos.push({
+				task: inputTextTag.value,
+				status: "作業中"
+			});
+
+			displayTodos();
+			inputTextTag.value = ""; //ToDo追加後に入力フォームをクリア
+		}
+	</script>
+	<body>
+		<h1>ToDoリスト</h1>
+		<input type="radio" name="status" value="all" checked>すべて
+		<input type="radio" name="status" value="doing">作業中
+		<input type="radio" name="status" value="done">完了
+		<table>
+			<thead>
+				<tr> <td><strong>ID</strong></td> <td><strong>コメント</strong></td> <td><strong>状態</strong></td> </tr>
+			</thead>
+			<tbody id="tableBody">
+			</tbody>
+		</table>
+		<h2>新規タスクの追加</h2>
+		<p>
+			<input type="text" id="inputText"> <input type="button" value="追加" onclick="onButtonClick();">
+		</p>
+	</body>
+</html>
