@@ -4,14 +4,27 @@
 		<meta charset="utf-8">
 	</head>
 	<script>
-		let todoId = 0;
+		let todos = [];
+
+		function displayTodos() {
+			const tbodyTag = document.getElementById("tableBody");
+
+			tbodyTag.innerHTML = ""; //まず既存のHTMLを初期化する。表示するたびに新しいHTMLを生成する
+			todos.forEach((todoObjct, idx) => {
+				const element = document.createElement("tr");
+				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status}></td> <td><input type="button" value="削除"></td>`;
+				tbodyTag.appendChild(element);
+			});
+		}
 
 		function onButtonClick() {
-			const tbodyTag = document.getElementById("tableBody");
-			const element = document.createElement("tr");
 			const inputTextTag = document.getElementById("inputText");
-			element.innerHTML = `<td>${todoId}</td> <td>${inputTextTag.value}</td> <td><input type="button" value="作業中"></td> <td><input type="button" value="削除"></td>`;
-			tbodyTag.appendChild(element);
+			todos.push({
+				task: inputTextTag.value,
+				status: "作業中"
+			});
+
+			displayTodos();
 			inputTextTag.value = ""; //ToDo追加後に入力フォームをクリア
 			todoId++;
 		}
