@@ -12,12 +12,17 @@
 			tbodyTag.innerHTML = ""; //まず既存のHTMLを初期化する。表示するたびに新しいHTMLを生成する
 			todos.forEach((todoObjct, idx) => {
 				const element = document.createElement("tr");
-				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status}></td> <td><input type="button" value="削除"></td>`;
+				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status}></td> <td><input type="button" value="削除" onclick="deleteTask(${idx});"></td>`;
 				tbodyTag.appendChild(element);
 			});
 		}
 
-		function onButtonClick() {
+		function deleteTask(idx) {
+			todos.splice(idx, 1);
+			displayTodos();
+		}
+
+		function addNewTask() {
 			const inputTextTag = document.getElementById("inputText");
 			todos.push({
 				task: inputTextTag.value,
@@ -42,7 +47,7 @@
 		</table>
 		<h2>新規タスクの追加</h2>
 		<p>
-			<input type="text" id="inputText"> <input type="button" value="追加" onclick="onButtonClick();">
+			<input type="text" id="inputText"> <input type="button" value="追加" onclick="addNewTask();">
 		</p>
 	</body>
 </html>
