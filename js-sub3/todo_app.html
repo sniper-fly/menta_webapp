@@ -12,18 +12,9 @@
 			tbodyTag.innerHTML = ""; //まず既存のHTMLを初期化する。表示するたびに新しいHTMLを生成する
 			todos.forEach((todoObjct, idx) => {
 				const element = document.createElement("tr");
-				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status} onclick="changeStatus(${idx});"></td> <td><input type="button" value="削除" onclick="deleteTask(${idx});"></td>`;
+				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status}></td> <td><input type="button" value="削除" onclick="deleteTask(${idx});"></td>`;
 				tbodyTag.appendChild(element);
 			});
-		}
-
-		function changeStatus(idx) {
-			if (todos[idx].status === "作業中") {
-				todos[idx].status = "完了";
-			} else {
-				todos[idx].status = "作業中";
-			}
-			displayTodos();
 		}
 
 		function deleteTask(idx) {
@@ -44,11 +35,9 @@
 	</script>
 	<body>
 		<h1>ToDoリスト</h1>
-		<form onchange="">
-			<input type="radio" name="status" value="all" checked>すべて
-			<input type="radio" name="status" value="doing">作業中
-			<input type="radio" name="status" value="done">完了
-		</form>
+		<input type="radio" name="status" value="all" checked>すべて
+		<input type="radio" name="status" value="doing">作業中
+		<input type="radio" name="status" value="done">完了
 		<table>
 			<thead>
 				<tr> <td><strong>ID</strong></td> <td><strong>コメント</strong></td> <td><strong>状態</strong></td> </tr>
