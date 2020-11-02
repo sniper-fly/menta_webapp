@@ -16,8 +16,16 @@
 			tbodyTag.innerHTML = ""; //まず既存のHTMLを初期化する。表示するたびに新しいHTMLを生成する
 			todos.forEach((todoObjct, idx) => {
 				const element = document.createElement("tr");
-				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status} onclick="changeStatus(${idx});"></td> <td><input type="button" value="削除" onclick="deleteTask(${idx});"></td>`;
+				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td>`;
+				const statusButton = document.createElement("td");
+				statusButton.innerHTML = `<input id="statusButton" type="button" value=${todoObjct.status} onclick="changeStatus(${idx});">`
+				const deleteButton = document.createElement("td");
+				deleteButton.innerHTML = `<input id="deleteButton" type="button" value="削除" onclick="deleteTask(${idx});">`
+				element.appendChild(statusButton);
+				element.appendChild(deleteButton);
 				tbodyTag.appendChild(element);
+				document.getElementById("statusButton").addEventListener("click", changeStatus(idx));
+				document.getElementById("deleteButton").addEventListener("click", deleteTask(idx));
 			});
 		}
 
