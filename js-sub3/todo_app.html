@@ -5,7 +5,7 @@
 	</head>
 	<script>
 		window.onload = () => {
-			document.getElementById("addButton").addEventListener("click", addNewTask);
+			document.getElementById("addButton").addEventListener("click", () => addNewTask());
 		}
 
 		let todos = [];
@@ -17,15 +17,18 @@
 			todos.forEach((todoObjct, idx) => {
 				const element = document.createElement("tr");
 				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td>`;
+
 				const statusButton = document.createElement("td");
-				statusButton.innerHTML = `<input id="statusButton" type="button" value=${todoObjct.status} onclick="changeStatus(${idx});">`
+				statusButton.innerHTML = `<input type="button" value=${todoObjct.status}>`
+				statusButton.addEventListener("click", () => changeStatus(idx));
+
 				const deleteButton = document.createElement("td");
-				deleteButton.innerHTML = `<input id="deleteButton" type="button" value="削除" onclick="deleteTask(${idx});">`
+				deleteButton.innerHTML = `<input type="button" value="削除">`
+				deleteButton.addEventListener("click", () => deleteTask(idx));
+
 				element.appendChild(statusButton);
 				element.appendChild(deleteButton);
 				tbodyTag.appendChild(element);
-				document.getElementById("statusButton").addEventListener("click", changeStatus(idx));
-				document.getElementById("deleteButton").addEventListener("click", deleteTask(idx));
 			});
 		}
 
