@@ -4,6 +4,10 @@
 		<meta charset="utf-8">
 	</head>
 	<script>
+		window.onload = () => {
+			document.getElementById("addButton").addEventListener("click", () => addNewTask());
+		}
+
 		let todos = [];
 
 		function displayTodos() {
@@ -12,9 +16,29 @@
 			tbodyTag.innerHTML = ""; //まず既存のHTMLを初期化する。表示するたびに新しいHTMLを生成する
 			todos.forEach((todoObjct, idx) => {
 				const element = document.createElement("tr");
-				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status}></td> <td><input type="button" value="削除" onclick="deleteTask(${idx});"></td>`;
+				element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td>`;
+
+				const statusButton = document.createElement("td");
+				statusButton.innerHTML = `<input type="button" value=${todoObjct.status}>`
+				statusButton.addEventListener("click", () => changeStatus(idx));
+
+				const deleteButton = document.createElement("td");
+				deleteButton.innerHTML = `<input type="button" value="削除">`
+				deleteButton.addEventListener("click", () => deleteTask(idx));
+
+				element.appendChild(statusButton);
+				element.appendChild(deleteButton);
 				tbodyTag.appendChild(element);
 			});
+		}
+
+		function changeStatus(idx) {
+			if (todos[idx].status === "作業中") {
+				todos[idx].status = "完了";
+			} else {
+				todos[idx].status = "作業中";
+			}
+			displayTodos();
 		}
 
 		function deleteTask(idx) {
@@ -47,7 +71,7 @@
 		</table>
 		<h2>新規タスクの追加</h2>
 		<p>
-			<input type="text" id="inputText"> <input type="button" value="追加" onclick="addNewTask();">
+			<input type="text" id="inputText"> <input type="button" id="addButton" value="追加">
 		</p>
 	</body>
 </html>
