@@ -6,24 +6,10 @@
 	<script>
 		window.onload = () => {
 			document.getElementById("addButton").addEventListener("click", () => addNewTask());
-			document.getElementById("radioButton").addEventListener("changed", () => displayTodos());
+			document.getElementById("radioButton").addEventListener("change", () => displayTodos());
 		}
 
 		let todos = [];
-
-		function displayTodos() {
-			const tbodyTag = document.getElementById("tableBody");
-			const checkedStatusValue = document.getElementById("statusRadioButton").status.value;
-
-			tbodyTag.innerHTML = ""; //まず既存のHTMLを初期化する。表示するたびに新しいHTMLを生成する
-			todos.forEach((todoObjct, idx) => {
-				if (checkedStatusValue === "すべて" || todoObjct.status === checkedStatusValue) {
-					const element = document.createElement("tr");
-					element.innerHTML = `<td>${idx}</td> <td>${todoObjct.task}</td> <td><input type="button" value=${todoObjct.status} onclick="changeStatus(${idx});"></td> <td><input type="button" value="削除" onclick="deleteTask(${idx});"></td>`;
-					tbodyTag.appendChild(element);
-				}
-			});
-		}
 
 		function displayTodos() {
 			const tbodyTag = document.getElementById("tableBody");
