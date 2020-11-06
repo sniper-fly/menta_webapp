@@ -1,0 +1,35 @@
+
+<!-- イメージの表示とファビコンの表示をしてみよう
+見出しとパラグラフの表示 -->
+<!-- 文字実態参照 -->
+<!-- &lt;p&gt; -->
+
+<!-- コードにはcodeタグ
+preタグで囲むと改行が反映される　すでに成型した文字列につかう
+引用にはblockquote cite属性もつけられる
+imgタグにはsrcの他にwidthやheight属性、画像が表示できない時の代替文章としてalt属性をつけられる
+
+箇条書きリスト
+unordered list
+list item
+
+順序付きリスト
+ordered list
+list item
+
+説明リスト
+descripton list
+description term
+description detail -->
+
+<!-- 表の表現
+tableタグで全体を囲む
+theadで見出しタグを囲む
+tbodyで表の要素
+table row => tr 行
+th => table header cell ヘッダー行の要素
+td => table data cell 本体行の要素 -->
+
+<!-- ページ内リンク
+ページ内で好きな場所に飛ぶには？？
+飛びたいタグにidをつけてあげて、hrefでそのidを指定してあげる -->
